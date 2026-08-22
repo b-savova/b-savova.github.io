@@ -685,3 +685,128 @@ footer {
   }
 
 }
+
+/* =========================================================
+   ABOUT — POLAROID + PAPER CLIP
+   ========================================================= */
+
+.about-photo {
+  position: absolute;
+  z-index: 5;
+
+  top: 11vh;
+  right: 7vw;
+
+  width: 210px;
+
+  transform: rotate(5deg);
+}
+
+
+/* Polaroid */
+
+.polaroid {
+  position: relative;
+
+  width: 100%;
+  padding: 12px 12px 42px;
+
+  background: #fff;
+
+  box-shadow:
+    6px 8px 0 rgba(0, 0, 0, 0.18);
+}
+
+.polaroid img {
+  display: block;
+
+  width: 100%;
+  aspect-ratio: 1 / 1.08;
+
+  object-fit: cover;
+}
+
+
+/* Paper clip */
+
+.paperclip {
+  position: absolute;
+
+  z-index: 10;
+
+  top: -30px;
+  left: 50%;
+
+  width: 27px;
+  height: 70px;
+
+  transform:
+    translateX(-50%)
+    rotate(4deg);
+
+  border: 2px solid #777;
+  border-radius: 14px;
+
+  pointer-events: none;
+}
+
+
+/* Inner section of the paper clip */
+
+.paperclip::after {
+  content: "";
+
+  position: absolute;
+
+  top: 5px;
+  left: 5px;
+
+  width: 14px;
+  height: 58px;
+
+  border: 2px solid #999;
+  border-radius: 10px;
+
+  border-bottom-color: transparent;
+  border-left-color: transparent;
+
+  transform: rotate(180deg);
+}
+
+
+/* Mobile */
+
+@media (max-width: 700px) {
+
+  .about-photo {
+    top: 8vh;
+    right: 7vw;
+
+    width: 135px;
+
+    transform: rotate(4deg);
+  }
+
+  .polaroid {
+    padding: 8px 8px 28px;
+
+    box-shadow:
+      4px 6px 0 rgba(0, 0, 0, 0.18);
+  }
+
+  .paperclip {
+    top: -22px;
+
+    width: 20px;
+    height: 52px;
+  }
+
+  .paperclip::after {
+    top: 4px;
+    left: 4px;
+
+    width: 10px;
+    height: 42px;
+  }
+
+}
