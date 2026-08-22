@@ -16,7 +16,7 @@ permalink: /about/
   
     <div class="polaroid">
       <img
-        src="{{ '/assets/images/boriana.jpg' | relative_url }}"
+        src="{{ '/assets/images/boriana.jpeg ' | relative_url }}"
         alt="Boriana Savova"
       >
     </div>
