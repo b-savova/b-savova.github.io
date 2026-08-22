@@ -10,6 +10,20 @@ permalink: /about/
     <span>ABOUT</span>
   </div>
 
+  <div class="about-photo">
+  
+    <div class="paperclip"></div>
+  
+    <div class="polaroid">
+      <img
+        src="{{ '/assets/images/boriana.jpg' | relative_url }}"
+        alt="Boriana Savova"
+      >
+    </div>
+  
+  </div>
+
+
   <article class="about-paper">
 
     <div class="paper-top">
