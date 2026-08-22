@@ -129,3 +129,76 @@ footer {
   }
 
 }
+
+/* Artwork page */
+
+.artwork-page {
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(280px, 1fr);
+  gap: 7vw;
+  padding: 60px 4vw 120px;
+  align-items: start;
+}
+
+.artwork-image img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.artwork-details {
+  position: sticky;
+  top: 40px;
+}
+
+.artwork-details h1 {
+  font-size: 2rem;
+  font-weight: 400;
+  letter-spacing: -0.03em;
+  margin: 0 0 35px;
+}
+
+.artwork-meta {
+  margin-bottom: 40px;
+}
+
+.artwork-meta p {
+  margin: 4px 0;
+  font-size: 0.9rem;
+}
+
+.availability {
+  font-size: 0.9rem;
+  margin-bottom: 25px;
+}
+
+.inquire {
+  display: inline-block;
+  border-bottom: 1px solid currentColor;
+  padding-bottom: 3px;
+  font-size: 0.9rem;
+}
+
+.inquire:hover {
+  opacity: 0.5;
+}
+
+.description {
+  margin-top: 60px;
+  max-width: 450px;
+  font-size: 0.9rem;
+}
+
+@media (max-width: 700px) {
+
+  .artwork-page {
+    grid-template-columns: 1fr;
+    gap: 40px;
+    padding-top: 30px;
+  }
+
+  .artwork-details {
+    position: static;
+  }
+
+}
