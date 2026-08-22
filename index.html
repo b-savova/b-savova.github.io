@@ -1,0 +1,33 @@
+---
+layout: default
+---
+
+<main class="home">
+  <section class="hero">
+    <h1>Boriana Savova</h1>
+    <p>Artist</p>
+  </section>
+
+  <section class="intro">
+    <p>
+      Contemporary artist working across drawing, painting,
+      installation and moving image.
+    </p>
+  </section>
+
+  <section class="featured">
+    <h2>Selected Works</h2>
+
+    <div class="work-grid">
+      {% for artwork in site.artworks limit:6 %}
+        <a href="{{ artwork.url }}" class="work">
+          <img src="{{ artwork.image }}" alt="{{ artwork.title }}">
+          <div class="work-info">
+            <span>{{ artwork.title }}</span>
+            <span>{{ artwork.year }}</span>
+          </div>
+        </a>
+      {% endfor %}
+    </div>
+  </section>
+</main>
