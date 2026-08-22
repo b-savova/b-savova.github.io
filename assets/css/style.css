@@ -80,9 +80,14 @@ nav a:hover {
 }
 
 .work-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 70px 30px;
+  columns: 3 300px;
+  column-gap: 30px;
+}
+
+.gallery-item {
+  display: block;
+  break-inside: avoid;
+  margin-bottom: 30px;
 }
 
 .work img {
