@@ -1,0 +1,44 @@
+---
+layout: default
+---
+
+<article class="artwork-page">
+
+  <div class="artwork-image">
+    <img src="{{ page.image }}" alt="{{ page.title }}">
+  </div>
+
+  <div class="artwork-details">
+
+    <h1>{{ page.title }}</h1>
+
+    <p>{{ page.year }}</p>
+
+    <p>{{ page.medium }}</p>
+
+    <p>{{ page.dimensions }}</p>
+
+    {% if page.status == "Available" %}
+      <p class="available">Available</p>
+
+      {% if page.price %}
+        <p>{{ page.price }}</p>
+      {% endif %}
+
+      <a href="mailto:YOUR-EMAIL-HERE" class="inquire">
+        Inquire
+      </a>
+
+    {% else %}
+      <p>Sold</p>
+    {% endif %}
+
+    {% if page.description %}
+      <div class="description">
+        {{ page.description }}
+      </div>
+    {% endif %}
+
+  </div>
+
+</article>
