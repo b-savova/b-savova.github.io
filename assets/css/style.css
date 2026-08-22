@@ -184,8 +184,31 @@ footer {
   }
 
   .hero {
-    min-height: 55vh;
-  }
+  min-height: 100svh;
+}
+
+.hero-image {
+  object-position: center center;
+}
+
+.hero-content {
+  padding: 0 6vw;
+}
+
+.hero h1 {
+  font-size: clamp(3.2rem, 16vw, 6rem);
+  line-height: 0.85;
+}
+
+.hero p {
+  margin-top: 22px;
+  font-size: 1rem;
+}
+
+.hero-scroll {
+  left: 6vw;
+  bottom: 24px;
+}
 
   .work-grid {
     grid-template-columns: 1fr;
