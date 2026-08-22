@@ -290,3 +290,158 @@ footer {
   }
 
 }
+
+/* Text pages */
+
+.text-page {
+  padding: 60px 4vw 140px;
+  max-width: 1500px;
+  margin: 0 auto;
+}
+
+.page-heading {
+  margin-bottom: 100px;
+}
+
+.page-heading h1 {
+  margin: 0;
+  font-size: clamp(4rem, 9vw, 9rem);
+  font-weight: 400;
+  letter-spacing: -0.065em;
+  line-height: 0.85;
+}
+
+.text-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(220px, 1fr);
+  gap: 8vw;
+}
+
+.text-main {
+  max-width: 720px;
+  font-size: 1.15rem;
+}
+
+.text-main p {
+  margin: 0 0 2em;
+}
+
+.lead {
+  font-size: clamp(1.4rem, 2.3vw, 2.2rem);
+  line-height: 1.2;
+  letter-spacing: -0.025em;
+}
+
+.text-side {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+
+/* CV */
+
+.cv-section {
+  border-top: 1px solid currentColor;
+  padding: 28px 0 65px;
+}
+
+.cv-section h2 {
+  font-size: 0.75rem;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin: 0 0 45px;
+}
+
+.cv-entry {
+  display: grid;
+  grid-template-columns: 100px 1fr;
+  gap: 30px;
+  margin-bottom: 35px;
+  max-width: 900px;
+}
+
+.cv-year {
+  font-size: 0.8rem;
+}
+
+.cv-entry h3 {
+  font-size: 1rem;
+  font-weight: 400;
+  margin: 0 0 5px;
+}
+
+.cv-entry p {
+  font-size: 0.9rem;
+  margin: 0;
+}
+
+
+/* Contact */
+
+.contact-content {
+  max-width: 800px;
+}
+
+.contact-email {
+  display: inline-block;
+  margin-top: 30px;
+  font-size: clamp(2rem, 4vw, 4rem);
+  line-height: 1;
+  letter-spacing: -0.04em;
+  border-bottom: 2px solid currentColor;
+}
+
+.contact-email:hover {
+  opacity: 0.5;
+}
+
+.contact-links {
+  margin-top: 80px;
+  display: flex;
+  gap: 30px;
+  font-size: 0.9rem;
+}
+
+.contact-links a:hover {
+  opacity: 0.5;
+}
+
+
+/* Mobile */
+
+@media (max-width: 700px) {
+
+  .text-page {
+    padding: 30px 6vw 100px;
+  }
+
+  .page-heading {
+    margin-bottom: 65px;
+  }
+
+  .text-layout {
+    grid-template-columns: 1fr;
+    gap: 50px;
+  }
+
+  .text-main {
+    font-size: 1rem;
+  }
+
+  .lead {
+    font-size: 1.35rem;
+  }
+
+  .cv-entry {
+    grid-template-columns: 65px 1fr;
+    gap: 15px;
+  }
+
+  .contact-email {
+    font-size: 9vw;
+    overflow-wrap: anywhere;
+  }
+
+}
