@@ -3,10 +3,29 @@ layout: default
 ---
 
 <main class="home">
+
   <section class="hero">
-    <h1>Boriana Savova</h1>
-    <p>Artist</p>
+
+    <img
+      class="hero-image"
+      src="{{ '/assets/images/life_form_4.jpg' | relative_url }}"
+      alt="Artwork by Boriana Savova"
+    >
+
+    <div class="hero-overlay"></div>
+
+    <div class="hero-content">
+      <h1>Boriana Savova</h1>
+      <p>Artist</p>
+    </div>
+
+    <a href="#selected-works" class="hero-scroll" aria-label="Scroll to selected works">
+      <span>Scroll</span>
+      <span class="hero-arrow">↓</span>
+    </a>
+
   </section>
+
 
   <section class="intro">
     <p>
@@ -15,19 +34,33 @@ layout: default
     </p>
   </section>
 
-  <section class="featured">
+
+  <section class="featured" id="selected-works">
+
     <h2>Selected Works</h2>
 
     <div class="work-grid">
+
       {% for artwork in site.artworks limit:6 %}
-        <a href="{{ artwork.url }}" class="work">
-          <img src="{{ artwork.image }}" alt="{{ artwork.title }}">
+
+        <a href="{{ artwork.url | relative_url }}" class="work">
+
+          <img
+            src="{{ artwork.image | relative_url }}"
+            alt="{{ artwork.title }}"
+          >
+
           <div class="work-info">
             <span>{{ artwork.title }}</span>
             <span>{{ artwork.year }}</span>
           </div>
+
         </a>
+
       {% endfor %}
+
     </div>
+
   </section>
+
 </main>
