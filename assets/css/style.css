@@ -463,7 +463,7 @@ footer {
 .about-title {
   position: relative;
   z-index: 0;
-  margin-bottom: -7vw;
+  margin-bottom: -2vw;
   pointer-events: none;
 }
 
