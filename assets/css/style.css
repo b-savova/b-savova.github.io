@@ -71,7 +71,7 @@ nav a:hover {
 .hero-overlay {
   position: absolute;
   inset: 0;
-  background: rgba(0, 0, 0, 0.58);
+  background: rgba(0, 0, 0, 0.48);
   z-index: -2;
   pointer-events: none;
 }
