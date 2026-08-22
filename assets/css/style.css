@@ -47,7 +47,8 @@ nav a:hover {
 
 .hero {
   position: relative;
-  min-height: 100svh;
+  min-height: 72svh;
+  height: 72svh;
   width: 100%;
   overflow: hidden;
   display: flex;
@@ -55,6 +56,7 @@ nav a:hover {
   justify-content: center;
   isolation: isolate;
 }
+ 
 
 .hero-image {
   position: absolute;
