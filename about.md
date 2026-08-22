@@ -4,36 +4,57 @@ title: About
 permalink: /about/
 ---
 
-<section class="text-page">
+<section class="about-page">
 
-  <header class="page-heading">
-    <h1>About</h1>
-  </header>
+  <div class="about-title">
+    <span>ABOUT</span>
+  </div>
 
-  <div class="text-layout">
+  <article class="about-paper">
 
-    <div class="text-main">
+    <div class="paper-top">
+      <span>ARTIST / 001</span>
+      <span>SOFIA / BG</span>
+    </div>
 
-      <p class="lead">
-        Boriana Savova is a contemporary artist based in Sofia, Bulgaria.
+    <div class="paper-content">
+
+      <h1>Boriana Savova</h1>
+
+      <p class="about-lead">
+        Contemporary artist based in Sofia, Bulgaria.
       </p>
 
-      <p>
-        [Your artist statement goes here.]
-      </p>
+      <div class="about-text">
 
-      <p>
-        [A second paragraph about your practice, materials and interests.]
-      </p>
+        <p>
+          [Your artist statement goes here.]
+        </p>
+
+        <p>
+          [A second paragraph about your artistic practice,
+          interests and materials goes here.]
+        </p>
+
+        <p>
+          [A third paragraph can describe your approach,
+          recurring subjects or current work.]
+        </p>
+
+      </div>
 
     </div>
 
-    <aside class="text-side">
-      <p>
-        Based in Sofia, Bulgaria
-      </p>
-    </aside>
+    <div class="paper-footer">
+      <span>BS / ABOUT</span>
+      <span>2026</span>
+    </div>
 
+  </article>
+
+  <div class="about-note">
+    <span>artist</span>
+    <span>drawer / painter / image-maker</span>
   </div>
 
 </section>
