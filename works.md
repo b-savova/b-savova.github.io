@@ -24,20 +24,23 @@ permalink: /works/
       Works on Paper
     </button>
 
-    <button class="filter-button" data-filter="painting">
+    <button class="filter-button" data-filter="paintings">
       Paintings
     </button>
 
-    <button class="filter-button" data-filter="collage">
+    <button class="filter-button" data-filter="collages">
       Collages
     </button>
 
-    <button class="filter-button" data-filter="print">
+    <button class="filter-button" data-filter="prints">
       Prints
     </button>
 
     <select class="series-filter" aria-label="Filter by series">
-      <option value="all">All Series</option>
+
+      <option value="all">
+        All Series
+      </option>
 
       {% assign series_list = site.artworks
         | map: "series"
@@ -45,11 +48,15 @@ permalink: /works/
         | sort %}
 
       {% for series in series_list %}
+
         {% if series %}
+
           <option value="{{ series | slugify }}">
             {{ series }}
           </option>
+
         {% endif %}
+
       {% endfor %}
 
     </select>
@@ -59,7 +66,9 @@ permalink: /works/
 
   <!-- SERIES DESCRIPTION -->
 
-  <div class="series-description" aria-live="polite">
+  <div
+    class="series-description"
+    aria-live="polite">
   </div>
 
 
@@ -72,10 +81,15 @@ permalink: /works/
       <a
         href="{{ artwork.image | relative_url }}"
         class="gallery-item lightbox-item"
-        data-type="{{ artwork.type | slugify }}"
+
+        data-category="{{ artwork.category | slugify }}"
+
         data-series="{{ artwork.series | slugify }}"
+
         data-title="{{ artwork.title }}"
+
         data-year="{{ artwork.year }}"
+
         data-description="{{ artwork.description | escape }}"
       >
 
@@ -125,42 +139,50 @@ document.addEventListener("DOMContentLoaded", function () {
 
   /* -------------------------------------------------------
      SERIES DESCRIPTIONS
-
-     We will fill these in properly once you give me
-     the names/descriptions of your series.
      ------------------------------------------------------- */
 
   const seriesDescriptions = {
+
+    /*
+      We will add your series here later.
+
+      Example:
+
+      "life-forms":
+        "A short description of the Life Forms series.",
+
+      "another-series":
+        "A short description of another series."
+    */
 
   };
 
 
   /* -------------------------------------------------------
-     FILTER
+     FILTER WORKS
      ------------------------------------------------------- */
 
   function filterWorks() {
 
-    const activeType =
-      document.querySelector(".filter-button.active")
-        .dataset.filter;
+    const activeCategory =
+      document.querySelector(".filter-button.active").dataset.filter;
 
     const activeSeries =
       seriesFilter.value;
 
 
-    items.forEach(item => {
+    items.forEach(function (item) {
 
-      const itemType =
-        item.dataset.type;
+      const itemCategory =
+        item.dataset.category;
 
       const itemSeries =
         item.dataset.series;
 
 
-      const typeMatches =
-        activeType === "all" ||
-        itemType === activeType;
+      const categoryMatches =
+        activeCategory === "all" ||
+        itemCategory === activeCategory;
 
 
       const seriesMatches =
@@ -168,7 +190,7 @@ document.addEventListener("DOMContentLoaded", function () {
         itemSeries === activeSeries;
 
 
-      if (typeMatches && seriesMatches) {
+      if (categoryMatches && seriesMatches) {
 
         item.style.display = "";
 
@@ -204,15 +226,19 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
 
-  /* Type buttons */
+  /* -------------------------------------------------------
+     CATEGORY BUTTONS
+     ------------------------------------------------------- */
 
-  buttons.forEach(button => {
+  buttons.forEach(function (button) {
 
     button.addEventListener("click", function () {
 
-      buttons.forEach(btn =>
-        btn.classList.remove("active")
-      );
+      buttons.forEach(function (btn) {
+
+        btn.classList.remove("active");
+
+      });
 
       this.classList.add("active");
 
@@ -223,13 +249,17 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
 
-  /* Series */
+  /* -------------------------------------------------------
+     SERIES FILTER
+     ------------------------------------------------------- */
 
   seriesFilter.addEventListener(
     "change",
     filterWorks
   );
 
+
+  /* Initial state */
 
   filterWorks();
 
