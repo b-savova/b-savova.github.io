@@ -140,14 +140,15 @@ nav a:hover {
 }
 
 .work-grid {
-  columns: 3 300px;
-  column-gap: 30px;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 60px 30px;
+  align-items: start;
 }
 
-.gallery-item {
+.work {
   display: block;
-  break-inside: avoid;
-  margin-bottom: 30px;
+  min-width: 0;
 }
 
 .work img {
@@ -156,6 +157,12 @@ nav a:hover {
   height: auto;
 }
 
+.work-info {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 12px;
+  font-size: 0.85rem;
+}
 .work-info {
   display: flex;
   justify-content: space-between;
