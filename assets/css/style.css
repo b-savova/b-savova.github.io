@@ -156,14 +156,15 @@ nav a:hover {
 /* Masonry */
 
 .work-grid {
-  columns: 3 300px;
-  column-gap: 30px;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 30px;
+  align-items: start;
 }
 
 .work {
   display: block;
-  break-inside: avoid;
-  margin-bottom: 30px;
+  min-width: 0;
 }
 
 .work img {
