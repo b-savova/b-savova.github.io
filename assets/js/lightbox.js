@@ -1,164 +1,276 @@
-document.addEventListener("DOMContentLoaded", function () {
+/* =========================================================
+   WORKS — FILTERS + MASONRY
+   ========================================================= */
 
-  const items = Array.from(document.querySelectorAll(".lightbox-item"));
+.works-filters {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 35px;
+}
 
-  if (!items.length) return;
 
-  /* Create lightbox */
+/* ---------------------------------------------------------
+   FILTER BUTTONS
+   --------------------------------------------------------- */
 
-  const lightbox = document.createElement("div");
-  lightbox.className = "lightbox";
+.filter-button {
+  appearance: none;
+  -webkit-appearance: none;
 
-  lightbox.innerHTML = `
-    <button class="lightbox-close" aria-label="Close">×</button>
+  background: transparent;
+  color: #20201e;
 
-    <button class="lightbox-prev" aria-label="Previous artwork">←</button>
+  border: 1px solid #20201e;
 
-    <div class="lightbox-content">
-      <img class="lightbox-image" src="" alt="">
-      <div class="lightbox-info">
-        <span class="lightbox-title"></span>
-        <span class="lightbox-year"></span>
-        <p class="lightbox-description"></p>
-      </div>
-    </div>
+  padding: 8px 14px;
 
-    <button class="lightbox-next" aria-label="Next artwork">→</button>
-  `;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 0.8rem;
+  line-height: 1.2;
 
-  document.body.appendChild(lightbox);
+  cursor: pointer;
 
-  const image = lightbox.querySelector(".lightbox-image");
-  const title = lightbox.querySelector(".lightbox-title");
-  const year = lightbox.querySelector(".lightbox-year");
-  const description = lightbox.querySelector(".lightbox-description");
+  transition:
+    background 0.2s ease,
+    color 0.2s ease,
+    opacity 0.2s ease;
+}
 
-  let currentIndex = 0;
+.filter-button:hover {
+  background: #20201e;
+  color: #f7f7f3;
+}
 
-  function showArtwork(index) {
+.filter-button.active {
+  background: #20201e;
+  color: #f7f7f3;
+}
 
-    currentIndex = (index + items.length) % items.length;
 
-    const item = items[currentIndex];
+/* ---------------------------------------------------------
+   SERIES DROPDOWN
+   --------------------------------------------------------- */
 
-    image.src = item.href;
-    image.alt = item.querySelector("img").alt;
+.series-filter {
+  appearance: none;
+  -webkit-appearance: none;
 
-    title.textContent = item.dataset.title || "";
-    year.textContent = item.dataset.year || "";
-    description.textContent = item.dataset.description || "";
+  background: #f7f7f3;
+  color: #20201e;
+
+  border: 1px solid #20201e;
+
+  padding: 8px 34px 8px 14px;
+
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 0.8rem;
+  line-height: 1.2;
+
+  cursor: pointer;
+
+  /* simple custom arrow */
+  background-image:
+    linear-gradient(45deg, transparent 50%, #20201e 50%),
+    linear-gradient(135deg, #20201e 50%, transparent 50%);
+
+  background-position:
+    calc(100% - 15px) 50%,
+    calc(100% - 10px) 50%;
+
+  background-size:
+    5px 5px,
+    5px 5px;
+
+  background-repeat: no-repeat;
+}
+
+
+/* ---------------------------------------------------------
+   SERIES DESCRIPTION
+   --------------------------------------------------------- */
+
+.series-description {
+  max-width: 650px;
+
+  margin: 0 0 55px;
+
+  font-size: 1.1rem;
+  line-height: 1.45;
+
+  opacity: 0;
+
+  transition: opacity 0.25s ease;
+}
+
+.series-description.visible {
+  opacity: 1;
+}
+
+
+/* =========================================================
+   WORKS — MASONRY GRID
+   ========================================================= */
+
+.works-grid {
+  width: 100%;
+
+  columns: 3 280px;
+  column-gap: 30px;
+}
+
+
+/* ---------------------------------------------------------
+   INDIVIDUAL WORK
+   --------------------------------------------------------- */
+
+.gallery-item {
+  display: block;
+
+  width: 100%;
+
+  break-inside: avoid;
+  -webkit-column-break-inside: avoid;
+  page-break-inside: avoid;
+
+  margin: 0 0 50px;
+
+  cursor: pointer;
+}
+
+
+/* ---------------------------------------------------------
+   IMAGE
+   --------------------------------------------------------- */
+
+.gallery-image {
+  width: 100%;
+
+  overflow: hidden;
+
+  background: #ecece8;
+}
+
+.gallery-image img {
+  display: block;
+
+  width: 100%;
+  height: auto;
+
+  max-width: 100%;
+
+  transition: transform 0.5s ease;
+}
+
+
+/* subtle hover effect */
+
+.gallery-item:hover .gallery-image img {
+  transform: scale(1.015);
+}
+
+
+/* ---------------------------------------------------------
+   WORK INFORMATION
+   --------------------------------------------------------- */
+
+.gallery-info {
+  display: flex;
+
+  justify-content: space-between;
+  align-items: baseline;
+
+  gap: 20px;
+
+  margin-top: 14px;
+
+  font-size: 0.85rem;
+  line-height: 1.3;
+}
+
+.gallery-info span:first-child {
+  min-width: 0;
+}
+
+.gallery-info span:last-child {
+  flex-shrink: 0;
+}
+
+
+/* =========================================================
+   FILTERED / HIDDEN WORKS
+   ========================================================= */
+
+.gallery-item[style*="display: none"] {
+  display: none !important;
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 700px) {
+
+  .works-filters {
+    gap: 8px;
+
+    margin-bottom: 30px;
   }
 
-  function openLightbox(index) {
 
-    showArtwork(index);
+  .filter-button,
+  .series-filter {
+    font-size: 0.75rem;
 
-    lightbox.classList.add("is-open");
-    document.body.classList.add("lightbox-open");
-  }
-
-  function closeLightbox() {
-
-    lightbox.classList.remove("is-open");
-    document.body.classList.remove("lightbox-open");
-  }
-
-  function nextArtwork() {
-    showArtwork(currentIndex + 1);
-  }
-
-  function previousArtwork() {
-    showArtwork(currentIndex - 1);
+    padding: 8px 11px;
   }
 
 
-  /* Open */
-
-  items.forEach((item, index) => {
-
-    item.addEventListener("click", function (event) {
-
-      event.preventDefault();
-
-      openLightbox(index);
-
-    });
-
-  });
+  .series-filter {
+    padding-right: 30px;
+  }
 
 
-  /* Navigation */
+  .series-description {
+    margin-bottom: 40px;
 
-  lightbox
-    .querySelector(".lightbox-next")
-    .addEventListener("click", function (event) {
-
-      event.stopPropagation();
-      nextArtwork();
-
-    });
-
-  lightbox
-    .querySelector(".lightbox-prev")
-    .addEventListener("click", function (event) {
-
-      event.stopPropagation();
-      previousArtwork();
-
-    });
+    font-size: 1rem;
+  }
 
 
-  /* Click image = next */
-
-  image.addEventListener("click", function (event) {
-
-    event.stopPropagation();
-    nextArtwork();
-
-  });
+  .works-grid {
+    columns: 1;
+  }
 
 
-  /* Close */
-
-  lightbox
-    .querySelector(".lightbox-close")
-    .addEventListener("click", function (event) {
-
-      event.stopPropagation();
-      closeLightbox();
-
-    });
+  .gallery-item {
+    margin-bottom: 40px;
+  }
 
 
-  /* Click outside image = close */
+  .gallery-info {
+    font-size: 0.8rem;
+  }
 
-  lightbox.addEventListener("click", function (event) {
-
-    if (event.target === lightbox) {
-      closeLightbox();
-    }
-
-  });
+}
 
 
-  /* Keyboard navigation */
+/* =========================================================
+   VERY SMALL SCREENS
+   ========================================================= */
 
-  document.addEventListener("keydown", function (event) {
+@media (max-width: 400px) {
 
-    if (!lightbox.classList.contains("is-open")) return;
+  .works-filters {
+    display: flex;
+    align-items: flex-start;
+  }
 
-    if (event.key === "Escape") {
-      closeLightbox();
-    }
+  .filter-button,
+  .series-filter {
+    font-size: 0.7rem;
+  }
 
-    if (event.key === "ArrowRight") {
-      nextArtwork();
-    }
-
-    if (event.key === "ArrowLeft") {
-      previousArtwork();
-    }
-
-  });
-
-});
+}
