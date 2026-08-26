@@ -74,48 +74,50 @@ permalink: /works/
 
   <!-- WORKS -->
 
-  <div class="works-grid">
+ <div class="works-grid">
 
-    {% for artwork in site.artworks %}
+  {% assign artworks_sorted = site.artworks | sort: "year" | reverse %}
 
-      <a
-        href="{{ artwork.image | relative_url }}"
-        class="gallery-item lightbox-item"
+  {% for artwork in artworks_sorted %}
 
-        data-category="{{ artwork.category | slugify }}"
+    <a
+      href="{{ artwork.image | relative_url }}"
+      class="gallery-item lightbox-item"
 
-        data-series="{{ artwork.series | slugify }}"
+      data-category="{{ artwork.category | slugify }}"
 
-        data-title="{{ artwork.title }}"
+      data-series="{{ artwork.series | slugify }}"
 
-        data-year="{{ artwork.year }}"
+      data-title="{{ artwork.title }}"
 
-        data-description="{{ artwork.description | escape }}"
-      >
+      data-year="{{ artwork.year }}"
 
-        <div class="gallery-image">
+      data-description="{{ artwork.description | escape }}"
+    >
 
-          <img
-            src="{{ artwork.image | relative_url }}"
-            alt="{{ artwork.title }}"
-            loading="lazy"
-            decoding="async"
-          >
+      <div class="gallery-image">
 
-        </div>
+        <img
+          src="{{ artwork.image | relative_url }}"
+          alt="{{ artwork.title }}"
+          loading="lazy"
+          decoding="async"
+        >
 
-        <div class="gallery-info">
+      </div>
 
-          <span>{{ artwork.title }}</span>
-          <span>{{ artwork.year }}</span>
+      <div class="gallery-info">
 
-        </div>
+        <span>{{ artwork.title }}</span>
+        <span>{{ artwork.year }}</span>
 
-      </a>
+      </div>
 
-    {% endfor %}
+    </a>
 
-  </div>
+  {% endfor %}
+
+</div>
 
 </section>
 
