@@ -41,9 +41,17 @@ nav a:hover {
   opacity: 0.5;
 }
 
+
+/* =========================================================
+   HOME
+   ========================================================= */
+
 .home {
   padding: 0 4vw 80px;
 }
+
+
+/* Hero */
 
 .hero {
   position: relative;
@@ -56,7 +64,6 @@ nav a:hover {
   justify-content: center;
   isolation: isolate;
 }
- 
 
 .hero-image {
   position: absolute;
@@ -125,11 +132,17 @@ nav a:hover {
   transform: translateY(4px);
 }
 
+
+/* Intro */
+
 .intro {
   max-width: 600px;
   font-size: 1.4rem;
   margin-bottom: 140px;
 }
+
+
+/* Selected Works */
 
 .featured h2 {
   font-size: 0.9rem;
@@ -139,16 +152,18 @@ nav a:hover {
   margin-bottom: 35px;
 }
 
+
+/* Masonry */
+
 .work-grid {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 60px 30px;
-  align-items: start;
+  columns: 3 300px;
+  column-gap: 30px;
 }
 
 .work {
   display: block;
-  min-width: 0;
+  break-inside: avoid;
+  margin-bottom: 30px;
 }
 
 .work img {
@@ -163,17 +178,19 @@ nav a:hover {
   margin-top: 12px;
   font-size: 0.85rem;
 }
-.work-info {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 12px;
-  font-size: 0.85rem;
-}
+
+
+/* Footer */
 
 footer {
   padding: 50px 4vw;
   font-size: 0.75rem;
 }
+
+
+/* =========================================================
+   HOME — MOBILE
+   ========================================================= */
 
 @media (max-width: 700px) {
 
@@ -188,35 +205,34 @@ footer {
   }
 
   .hero {
-  min-height: 100svh;
-}
+    min-height: 100svh;
+  }
 
-.hero-image {
-  object-position: center center;
-}
+  .hero-image {
+    object-position: center center;
+  }
 
-.hero-content {
-  padding: 0 6vw;
-}
+  .hero-content {
+    padding: 0 6vw;
+  }
 
-.hero h1 {
-  font-size: clamp(3.2rem, 16vw, 6rem);
-  line-height: 0.85;
-}
+  .hero h1 {
+    font-size: clamp(3.2rem, 16vw, 6rem);
+    line-height: 0.85;
+  }
 
-.hero p {
-  margin-top: 22px;
-  font-size: 1rem;
-}
+  .hero p {
+    margin-top: 22px;
+    font-size: 1rem;
+  }
 
-.hero-scroll {
-  left: 6vw;
-  bottom: 24px;
-}
+  .hero-scroll {
+    left: 6vw;
+    bottom: 24px;
+  }
 
   .work-grid {
-    grid-template-columns: 1fr;
-    gap: 50px;
+    columns: 1;
   }
 
   .intro {
@@ -226,7 +242,9 @@ footer {
 }
 
 
-/* Works page */
+/* =========================================================
+   WORKS PAGE
+   ========================================================= */
 
 .works-page {
   padding: 50px 4vw 120px;
@@ -281,6 +299,9 @@ footer {
   font-size: 0.85rem;
 }
 
+
+/* Works — Mobile */
+
 @media (max-width: 700px) {
 
   .works-page {
@@ -298,7 +319,10 @@ footer {
 
 }
 
-/* Text pages */
+
+/* =========================================================
+   TEXT PAGES
+   ========================================================= */
 
 .text-page {
   padding: 60px 4vw 140px;
@@ -346,7 +370,9 @@ footer {
 }
 
 
-/* CV */
+/* =========================================================
+   CV
+   ========================================================= */
 
 .cv-section {
   border-top: 1px solid currentColor;
@@ -385,7 +411,9 @@ footer {
 }
 
 
-/* Contact */
+/* =========================================================
+   CONTACT
+   ========================================================= */
 
 .contact-content {
   max-width: 800px;
@@ -416,7 +444,7 @@ footer {
 }
 
 
-/* Mobile */
+/* Text pages — Mobile */
 
 @media (max-width: 700px) {
 
@@ -453,6 +481,7 @@ footer {
 
 }
 
+
 /* =========================================================
    ABOUT
    ========================================================= */
@@ -470,7 +499,7 @@ footer {
 }
 
 
-/* Text */
+/* About — Text */
 
 .about-text-column {
   max-width: 720px;
@@ -478,7 +507,6 @@ footer {
 
 .about-text-column h1 {
   margin: 0 0 90px;
-
   font-size: clamp(5rem, 10vw, 10rem);
   font-weight: 400;
   letter-spacing: -0.07em;
@@ -488,7 +516,6 @@ footer {
 .about-lead {
   max-width: 620px;
   margin: 0 0 60px;
-
   font-size: clamp(1.4rem, 2.3vw, 2.2rem);
   line-height: 1.15;
   letter-spacing: -0.025em;
@@ -496,7 +523,6 @@ footer {
 
 .about-body {
   max-width: 600px;
-
   font-size: 1rem;
   line-height: 1.65;
 }
@@ -506,7 +532,7 @@ footer {
 }
 
 
-/* Photograph */
+/* About — Photograph */
 
 .about-image-column {
   align-self: start;
@@ -515,24 +541,21 @@ footer {
 
 .about-image-column img {
   display: block;
-
   width: 100%;
   max-width: 500px;
   height: auto;
-
   object-fit: cover;
 }
 
 .about-caption {
   margin-top: 12px;
-
   font-size: 0.75rem;
   text-transform: uppercase;
   letter-spacing: 0.08em;
 }
 
 
-/* Mobile */
+/* About — Mobile */
 
 @media (max-width: 700px) {
 
