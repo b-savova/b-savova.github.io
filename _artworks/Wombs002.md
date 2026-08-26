@@ -1,6 +1,6 @@
 ---
 title: "Untitled"
-year: 2026
+year: 2024
 medium: "Mixed media on paper"
 dimensions: "50 × 70 cm"
 status: "Available"
