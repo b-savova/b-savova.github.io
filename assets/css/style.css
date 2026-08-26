@@ -268,13 +268,14 @@ footer {
 }
 
 .works-grid {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 90px 30px;
+  columns: 3;
+  column-gap: 30px;
 }
 
 .gallery-item {
   display: block;
+  break-inside: avoid;
+  margin-bottom: 45px;
 }
 
 .gallery-image {
