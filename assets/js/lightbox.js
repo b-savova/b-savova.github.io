@@ -1,276 +1,164 @@
-/* =========================================================
-   WORKS — FILTERS + MASONRY
-   ========================================================= */
+document.addEventListener("DOMContentLoaded", function () {
 
-.works-filters {
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 10px;
-  margin-bottom: 35px;
-}
+  const items = Array.from(document.querySelectorAll(".lightbox-item"));
 
+  if (!items.length) return;
 
-/* ---------------------------------------------------------
-   FILTER BUTTONS
-   --------------------------------------------------------- */
+  /* Create lightbox */
 
-.filter-button {
-  appearance: none;
-  -webkit-appearance: none;
+  const lightbox = document.createElement("div");
+  lightbox.className = "lightbox";
 
-  background: transparent;
-  color: #20201e;
+  lightbox.innerHTML = `
+    <button class="lightbox-close" aria-label="Close">×</button>
 
-  border: 1px solid #20201e;
+    <button class="lightbox-prev" aria-label="Previous artwork">←</button>
 
-  padding: 8px 14px;
+    <div class="lightbox-content">
+      <img class="lightbox-image" src="" alt="">
+      <div class="lightbox-info">
+        <span class="lightbox-title"></span>
+        <span class="lightbox-year"></span>
+        <p class="lightbox-description"></p>
+      </div>
+    </div>
 
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 0.8rem;
-  line-height: 1.2;
+    <button class="lightbox-next" aria-label="Next artwork">→</button>
+  `;
 
-  cursor: pointer;
+  document.body.appendChild(lightbox);
 
-  transition:
-    background 0.2s ease,
-    color 0.2s ease,
-    opacity 0.2s ease;
-}
+  const image = lightbox.querySelector(".lightbox-image");
+  const title = lightbox.querySelector(".lightbox-title");
+  const year = lightbox.querySelector(".lightbox-year");
+  const description = lightbox.querySelector(".lightbox-description");
 
-.filter-button:hover {
-  background: #20201e;
-  color: #f7f7f3;
-}
+  let currentIndex = 0;
 
-.filter-button.active {
-  background: #20201e;
-  color: #f7f7f3;
-}
+  function showArtwork(index) {
 
+    currentIndex = (index + items.length) % items.length;
 
-/* ---------------------------------------------------------
-   SERIES DROPDOWN
-   --------------------------------------------------------- */
+    const item = items[currentIndex];
 
-.series-filter {
-  appearance: none;
-  -webkit-appearance: none;
+    image.src = item.href;
+    image.alt = item.querySelector("img").alt;
 
-  background: #f7f7f3;
-  color: #20201e;
+    title.textContent = item.dataset.title || "";
+    year.textContent = item.dataset.year || "";
+    description.textContent = item.dataset.description || "";
+  }
 
-  border: 1px solid #20201e;
+  function openLightbox(index) {
 
-  padding: 8px 34px 8px 14px;
+    showArtwork(index);
 
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 0.8rem;
-  line-height: 1.2;
+    lightbox.classList.add("is-open");
+    document.body.classList.add("lightbox-open");
+  }
 
-  cursor: pointer;
+  function closeLightbox() {
 
-  /* simple custom arrow */
-  background-image:
-    linear-gradient(45deg, transparent 50%, #20201e 50%),
-    linear-gradient(135deg, #20201e 50%, transparent 50%);
+    lightbox.classList.remove("is-open");
+    document.body.classList.remove("lightbox-open");
+  }
 
-  background-position:
-    calc(100% - 15px) 50%,
-    calc(100% - 10px) 50%;
+  function nextArtwork() {
+    showArtwork(currentIndex + 1);
+  }
 
-  background-size:
-    5px 5px,
-    5px 5px;
-
-  background-repeat: no-repeat;
-}
-
-
-/* ---------------------------------------------------------
-   SERIES DESCRIPTION
-   --------------------------------------------------------- */
-
-.series-description {
-  max-width: 650px;
-
-  margin: 0 0 55px;
-
-  font-size: 1.1rem;
-  line-height: 1.45;
-
-  opacity: 0;
-
-  transition: opacity 0.25s ease;
-}
-
-.series-description.visible {
-  opacity: 1;
-}
-
-
-/* =========================================================
-   WORKS — MASONRY GRID
-   ========================================================= */
-
-.works-grid {
-  width: 100%;
-
-  columns: 3 280px;
-  column-gap: 30px;
-}
-
-
-/* ---------------------------------------------------------
-   INDIVIDUAL WORK
-   --------------------------------------------------------- */
-
-.gallery-item {
-  display: block;
-
-  width: 100%;
-
-  break-inside: avoid;
-  -webkit-column-break-inside: avoid;
-  page-break-inside: avoid;
-
-  margin: 0 0 50px;
-
-  cursor: pointer;
-}
-
-
-/* ---------------------------------------------------------
-   IMAGE
-   --------------------------------------------------------- */
-
-.gallery-image {
-  width: 100%;
-
-  overflow: hidden;
-
-  background: #ecece8;
-}
-
-.gallery-image img {
-  display: block;
-
-  width: 100%;
-  height: auto;
-
-  max-width: 100%;
-
-  transition: transform 0.5s ease;
-}
-
-
-/* subtle hover effect */
-
-.gallery-item:hover .gallery-image img {
-  transform: scale(1.015);
-}
-
-
-/* ---------------------------------------------------------
-   WORK INFORMATION
-   --------------------------------------------------------- */
-
-.gallery-info {
-  display: flex;
-
-  justify-content: space-between;
-  align-items: baseline;
-
-  gap: 20px;
-
-  margin-top: 14px;
-
-  font-size: 0.85rem;
-  line-height: 1.3;
-}
-
-.gallery-info span:first-child {
-  min-width: 0;
-}
-
-.gallery-info span:last-child {
-  flex-shrink: 0;
-}
-
-
-/* =========================================================
-   FILTERED / HIDDEN WORKS
-   ========================================================= */
-
-.gallery-item[style*="display: none"] {
-  display: none !important;
-}
-
-
-/* =========================================================
-   MOBILE
-   ========================================================= */
-
-@media (max-width: 700px) {
-
-  .works-filters {
-    gap: 8px;
-
-    margin-bottom: 30px;
+  function previousArtwork() {
+    showArtwork(currentIndex - 1);
   }
 
 
-  .filter-button,
-  .series-filter {
-    font-size: 0.75rem;
+  /* Open */
 
-    padding: 8px 11px;
-  }
+  items.forEach((item, index) => {
 
+    item.addEventListener("click", function (event) {
 
-  .series-filter {
-    padding-right: 30px;
-  }
+      event.preventDefault();
 
+      openLightbox(index);
 
-  .series-description {
-    margin-bottom: 40px;
+    });
 
-    font-size: 1rem;
-  }
+  });
 
 
-  .works-grid {
-    columns: 1;
-  }
+  /* Navigation */
+
+  lightbox
+    .querySelector(".lightbox-next")
+    .addEventListener("click", function (event) {
+
+      event.stopPropagation();
+      nextArtwork();
+
+    });
+
+  lightbox
+    .querySelector(".lightbox-prev")
+    .addEventListener("click", function (event) {
+
+      event.stopPropagation();
+      previousArtwork();
+
+    });
 
 
-  .gallery-item {
-    margin-bottom: 40px;
-  }
+  /* Click image = next */
+
+  image.addEventListener("click", function (event) {
+
+    event.stopPropagation();
+    nextArtwork();
+
+  });
 
 
-  .gallery-info {
-    font-size: 0.8rem;
-  }
+  /* Close */
 
-}
+  lightbox
+    .querySelector(".lightbox-close")
+    .addEventListener("click", function (event) {
+
+      event.stopPropagation();
+      closeLightbox();
+
+    });
 
 
-/* =========================================================
-   VERY SMALL SCREENS
-   ========================================================= */
+  /* Click outside image = close */
 
-@media (max-width: 400px) {
+  lightbox.addEventListener("click", function (event) {
 
-  .works-filters {
-    display: flex;
-    align-items: flex-start;
-  }
+    if (event.target === lightbox) {
+      closeLightbox();
+    }
 
-  .filter-button,
-  .series-filter {
-    font-size: 0.7rem;
-  }
+  });
 
-}
+
+  /* Keyboard navigation */
+
+  document.addEventListener("keydown", function (event) {
+
+    if (!lightbox.classList.contains("is-open")) return;
+
+    if (event.key === "Escape") {
+      closeLightbox();
+    }
+
+    if (event.key === "ArrowRight") {
+      nextArtwork();
+    }
+
+    if (event.key === "ArrowLeft") {
+      previousArtwork();
+    }
+
+  });
+
+});
