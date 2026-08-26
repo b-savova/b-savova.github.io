@@ -835,3 +835,143 @@ body.lightbox-open {
   }
 
 }
+
+/* =========================================================
+   WORKS — FILTERS
+   ========================================================= */
+
+.works-filters {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 35px;
+}
+
+.filter-button {
+  appearance: none;
+  background: none;
+  border: 1px solid currentColor;
+
+  padding: 8px 14px;
+
+  font-family: inherit;
+  font-size: 0.8rem;
+
+  cursor: pointer;
+}
+
+.filter-button:hover,
+.filter-button.active {
+  background: #20201e;
+  color: #f7f7f3;
+}
+
+.series-filter {
+  appearance: none;
+
+  background: #f7f7f3;
+  color: #20201e;
+
+  border: 1px solid currentColor;
+
+  padding: 8px 32px 8px 14px;
+
+  font-family: inherit;
+  font-size: 0.8rem;
+
+  cursor: pointer;
+}
+
+
+/* Series description */
+
+.series-description {
+  max-width: 650px;
+
+  margin: 0 0 55px;
+
+  font-size: 1.1rem;
+  line-height: 1.45;
+
+  opacity: 0;
+
+  transition: opacity 0.25s ease;
+}
+
+.series-description.visible {
+  opacity: 1;
+}
+
+
+/* =========================================================
+   WORKS — MASONRY
+   ========================================================= */
+
+.works-grid {
+  columns: 3 300px;
+  column-gap: 30px;
+}
+
+.gallery-item {
+  display: block;
+
+  break-inside: avoid;
+
+  margin-bottom: 45px;
+
+  cursor: pointer;
+}
+
+.gallery-image {
+  overflow: hidden;
+  background: #ecece8;
+}
+
+.gallery-image img {
+  display: block;
+
+  width: 100%;
+  height: auto;
+
+  transition: transform 0.5s ease;
+}
+
+.gallery-item:hover .gallery-image img {
+  transform: scale(1.015);
+}
+
+.gallery-info {
+  display: flex;
+  justify-content: space-between;
+
+  margin-top: 14px;
+
+  font-size: 0.85rem;
+}
+
+
+/* =========================================================
+   WORKS — MOBILE
+   ========================================================= */
+
+@media (max-width: 700px) {
+
+  .works-filters {
+    gap: 8px;
+  }
+
+  .filter-button,
+  .series-filter {
+    font-size: 0.75rem;
+  }
+
+  .works-grid {
+    columns: 1;
+  }
+
+  .gallery-item {
+    margin-bottom: 40px;
+  }
+
+}
