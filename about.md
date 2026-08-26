@@ -6,40 +6,17 @@ permalink: /about/
 
 <section class="about-page">
 
-  <div class="about-title">
-    <span>ABOUT</span>
-  </div>
+  <div class="about-content">
 
-  <div class="about-photo">
-  
-    <div class="paperclip"></div>
-  
-    <div class="polaroid">
-      <img
-        src="{{ '/assets/images/boriana.jpeg ' | relative_url }}"
-        alt="Boriana Savova"
-      >
-    </div>
-  
-  </div>
+    <div class="about-text-column">
 
-
-  <article class="about-paper">
-
-    <div class="paper-top">
-      <span>ARTIST / 001</span>
-      <span>SOFIA / BG</span>
-    </div>
-
-    <div class="paper-content">
-
-      <h1>Boriana Savova</h1>
+      <h1>About</h1>
 
       <p class="about-lead">
         Contemporary artist based in Sofia, Bulgaria.
       </p>
 
-      <div class="about-text">
+      <div class="about-body">
 
         <p>
           [Your artist statement goes here.]
@@ -51,24 +28,26 @@ permalink: /about/
         </p>
 
         <p>
-          [A third paragraph can describe your approach,
-          recurring subjects or current work.]
+          [A third paragraph about your work can go here.]
         </p>
 
       </div>
 
     </div>
 
-    <div class="paper-footer">
-      <span>BS / ABOUT</span>
-      <span>2026</span>
+    <div class="about-image-column">
+
+      <img
+        src="{{ '/assets/images/boriana.jpeg' | relative_url }}"
+        alt="Boriana Savova"
+      >
+
+      <p class="about-caption">
+        Boriana Savova
+      </p>
+
     </div>
 
-  </article>
-
-  <div class="about-note">
-    <span>artist</span>
-    <span>drawer / painter / image-maker</span>
   </div>
 
 </section>
