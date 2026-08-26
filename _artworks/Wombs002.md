@@ -7,4 +7,5 @@ status: "Available"
 category: "Paintings"
 image: "/assets/images/Wombs002.jpg"
 description: "Test desctiption"
+series: "Life forms"
 ---
