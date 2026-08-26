@@ -43,19 +43,29 @@ layout: default
 
       {% for artwork in site.artworks limit:6 %}
 
-        <a href="{{ artwork.url | relative_url }}" class="work">
+  <a
+    href="{{ artwork.image | relative_url }}"
+    class="work lightbox-item"
+    data-title="{{ artwork.title }}"
+    data-year="{{ artwork.year }}"
+    data-description="{{ artwork.description | escape }}"
+  >
 
-          <img
-            src="{{ artwork.image | relative_url }}"
-            alt="{{ artwork.title }}"
-            loading="eager"
-            decoding="async"
-          >
+    <img
+      src="{{ artwork.image | relative_url }}"
+      alt="{{ artwork.title }}"
+      loading="eager"
+      decoding="async"
+    >
 
+    <div class="work-hover-info">
+      <span>{{ artwork.title }}</span>
+      <span>{{ artwork.year }}</span>
+    </div>
 
-        </a>
+  </a>
 
-      {% endfor %}
+{% endfor %}
 
     </div>
 
